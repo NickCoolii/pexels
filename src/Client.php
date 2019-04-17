@@ -32,6 +32,7 @@ class Client
     {
         if (null === $this->client) {
             $this->client = new \GuzzleHttp\Client([
+                'base_uri' => 'https://api.pexels.com/v1/',
                 'headers' => [
                     'Authorization' => $this->token,
                 ],
@@ -49,7 +50,7 @@ class Client
      */
     public function search($query, $size = 15, $page = 1)
     {
-        return $this->getClient()->get('http://api.pexels.com/v1/search?' .
+        return $this->getClient()->get('search?' .
             http_build_query([
                 'query'    => $query,
                 'per_page' => $size,
